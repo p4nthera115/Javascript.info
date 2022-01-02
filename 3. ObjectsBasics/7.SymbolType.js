@@ -50,7 +50,6 @@ user.id = "other id value";
 // id is now overwritten by another script
 
 // Symbols in an Object Literal
-console.log("");
 // To use a symbol in an object literal, square brackets must be around it
 id = Symbol("id");
 user = {
@@ -69,4 +68,38 @@ user = {
 };
 
 for (let key in user) console.log(key); // name, age, no symbol
+console.log(user);
 console.log(user[id]); // must directly access symbol to view
+
+// "Object.assign" copies both string and symbol properties
+id = Symbol("id");
+user = {
+  name: "Finn",
+  age: 16,
+  [id]: 123,
+};
+
+let clone = Object.assign({}, user);
+
+console.log(clone);
+console.log(clone[id]);
+
+// Global Symbols
+console.log("");
+console.log("--- GLOBAL SYMBOLS ---");
+// The "global symbol registry" exists to store symbols that need repeated access
+// To read (or create if absent) a symbol from the registry, "Symbol.for(key)"
+// this call checks the global registry, and if there is a symbol with a description of "key", it returns it,
+// otherwise creates a new symbol "Symbol(key)" and stores it in the registry
+id = Symbol.for("id"); // read from the global registry or create if symbol does not exist
+
+let idAgain = Symbol.for("id"); // read it again (maybe from another part of the code)
+
+console.log(id === idAgain); // true
+// symbols inside the registry are called "global symbols"
+// global symbols are application-wide and accessible everywhere in the code
+
+// Symbol.keyFor
+console.log("");
+// "Symbol.keyFor(sym)" does the opposite of "Symbol.for(key)", it returns a name by a global symbol
+
