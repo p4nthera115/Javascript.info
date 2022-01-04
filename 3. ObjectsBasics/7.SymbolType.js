@@ -13,10 +13,10 @@ let id = Symbol("id");
 let id1 = Symbol("id");
 let id2 = Symbol("id");
 console.log(id1 == id2); // false
-// symbols and strings are different and do not convert automatically
+// symbols are not strings and do not convert to strings automatically
 // to explicitly show a symbol:
 id = Symbol("id");
-console.log(id.toString()); // converts to string
+console.log(id.toString()); // converts to string to view symbol
 // to show description only
 console.log(id.description); // id
 
@@ -102,4 +102,28 @@ console.log(id === idAgain); // true
 // Symbol.keyFor
 console.log("");
 // "Symbol.keyFor(sym)" does the opposite of "Symbol.for(key)", it returns a name by a global symbol
+// get symbol by name
+let sym = Symbol.for("name");
+let sym2 = Symbol.for("id");
+
+// get name by symbol
+console.log(Symbol.keyFor(sym)); // name
+console.log(Symbol.keyFor(sym2)); // id
+
+// "Symbol.keyFor" uses global symbol registry, if symbol is not global, returns undefined
+// Any symbol can have a description property
+let globalSymbol = Symbol.for("name");
+let localSymbol = Symbol("name");
+
+console.log(Symbol.keyFor(globalSymbol)); // name
+console.log(Symbol.keyFor(localSymbol)); // undefined, not global
+
+console.log(localSymbol.description); // name
+
+// System Symbols
+console.log("");
+// JS uses many "system" symbols internally which can be used to fine-tune various aspects of objects
+// These symbols are listed  in the "Well-known symbols" table under the "Well-Known symbols" section of the ECMAScript language specification
+
+// For instance, "Symbol.toPrimitive" allows to describe object to primitive conversion.
 
