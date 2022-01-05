@@ -68,7 +68,7 @@ function SmallUser() {
 }
 
 console.log(new SmallUser().name);
-// Basically, "return" with an object returns that object, an all other cases, "this" is returned
+// Basically, "return" with an object returns that object, in all other cases, "this" is returned
 
 // Methods in Constructor
 console.log("");
