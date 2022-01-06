@@ -118,7 +118,7 @@ console.log("--- TESTS: isFinite AND isNaN ---");
 // • "Infinity" (and "-Infinity") is a special numeric value that is greater (less) than anything
 // • "NaN" represents an error
 
-// They belong to the "number" type, but are not "normal" numbers, so there are special functions 
+// They belong to the "number" type, but are not "normal" numbers, so there are special functions
 // to check for them:
 
 // • "isNaN(value)" converts its argument to a number and then tests it for being "NaN"
@@ -158,12 +158,12 @@ console.log(parseInt("0xff", 16)); // 255
 console.log(parseInt("ff", 16)); // 255, without "0x" also works
 console.log(parseInt("2n9c", 36)); // 123456
 
-// Other Math Functions 
+// Other Math Functions
 console.log("");
 console.log("--- OTHER MATH FUNCTIONS ---");
 // JS built-in "Math" object contains a small library of mathematical functions and constants
 // Some exapmles:
-console.log(Math.random()); // returns random number between 0 and 1 
+console.log(Math.random()); // returns random number between 0 and 1
 
 console.log(Math.max(3, 5, -10, 0, 1)); // returns greatest from arguments
 console.log(Math.min(3, 5, -10, 0, 1)); // returns smallest from arguments
@@ -174,9 +174,9 @@ console.log(Math.pow(2, 10)); // (n, power) 2 ** 10 = 1024
 console.log("");
 let i = 0;
 while (i.toFixed(0) != 10) {
-    i += 0.2
-    if (i++ === i) {
-        continue;
-    };
-    console.log(i.toFixed(0));
+  i += 0.2;
+  if (i++ === i) {
+    continue;
+  }
+  console.log(i.toFixed(0));
 }
