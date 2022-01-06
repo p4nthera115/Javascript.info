@@ -107,6 +107,11 @@ console.log("--- IMPRECISE CALCULATIONS ---");
 // If a number is too big, it would overflow the 64-bit storage, potentially giving infinity:
 console.log(1e500); // Infinity
 
+// 0.1 + 0.2 != 0.3
+console.log(0.1 + 0.2); // 0.30000000000000004
+// This is because numbers like "0.1" and "0.2" are unending fractions in the binary numeral system
+// Similar to how "1/3" is an endless fraction in the decimal numeral system
+
 // Tests: isFinite and isNaN
 console.log("");
 console.log("--- TESTS: isFinite AND isNaN ---");
