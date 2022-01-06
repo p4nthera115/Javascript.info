@@ -164,3 +164,14 @@ console.log(Math.max(3, 5, -10, 0, 1)); // returns greatest from arguments
 console.log(Math.min(3, 5, -10, 0, 1)); // returns smallest from arguments
 
 console.log(Math.pow(2, 10)); // (n, power) 2 ** 10 = 1024
+
+// Task
+console.log("");
+let i = 0;
+while (i.toFixed(0) != 10) {
+    i += 0.2
+    if (i++ === i) {
+        continue;
+    };
+    console.log(i.toFixed(0));
+}
