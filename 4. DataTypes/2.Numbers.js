@@ -144,3 +144,23 @@ console.log(parseInt("12.3")); // 12, only the integer part is returned
 // "parseFloat" returns a floating-point number
 console.log(parseFloat("12.5em")); // 12.5
 console.log(parseFloat("12.3.4")); // 12.3, the second point stops the reading
+
+// "parseInt"/"parseFloat" will return NaN when no digits can be read:
+console.log(parseInt("a123")); // NaN, the first character stops the process
+
+// "parseInt" has an optional second parameter which can specify the base of the numeral system
+console.log(parseInt("0xff", 16)); // 255
+console.log(parseInt("ff", 16)); // 255, without "0x" also works
+console.log(parseInt("2n9c", 36)); // 123456
+
+// Other Math Functions 
+console.log("");
+console.log("--- OTHER MATH FUNCTIONS ---");
+// JS built-in "Math" object contains a small library of mathematical functions and constants
+// Some exapmles:
+console.log(Math.random()); // returns random number between 0 and 1 
+
+console.log(Math.max(3, 5, -10, 0, 1)); // returns greatest from arguments
+console.log(Math.min(3, 5, -10, 0, 1)); // returns smallest from arguments
+
+console.log(Math.pow(2, 10)); // (n, power) 2 ** 10 = 1024
