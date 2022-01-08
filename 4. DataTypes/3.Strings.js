@@ -40,7 +40,7 @@ console.log(guestList);
 
 // "\n" - New line
 // "\r" - Windows text files use "\r\n" for historical reasons
-// " \' ", " \" " - Quotes
+// "(\')", "(\")" - Quotes
 // "\\" = Backslash
 // "\t" = Tab
 //  "\b, \f, \v" - Backspace, Form Feed, Vertical Tab; kept for compatibility, not used nowadays

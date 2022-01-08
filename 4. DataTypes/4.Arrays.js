@@ -203,9 +203,47 @@ let matrix = [
   [7, 8, 9],
 ];
 console.log(matrix);
-console.log(matrix[1][1]); // 5 
+console.log(matrix[1][1]); // 5
 
 // toString
 console.log("");
 console.log("--- toString ---");
-// Arrays have their own implementation of "toString" method that returns comma-seperated list of elements.
+// Arrays have their own implementation of "toString" method that returns a comma-seperated list of elements.
+arr = [1, 2, 3];
+console.log(arr); // 1,2,3
+console.log(String(arr) === "1,2,3"); // true
+
+// Arrays do not have "Symbol.toPrimitive", or a viable "valueOf".
+// They implement only "toString" conversion
+// binary plus "+", adds something to a string, automatically converting it to a string as well.
+console.log([] + 1); // 1, "[]" becomes an empty string
+console.log([1] + 1); // 11, "[1]" becomes "1"
+console.log([1, 2] + 1); // 1,21, "[1, 2]" becomes "1,2"
+
+// Don't Compare Arrays With "=="
+console.log("");
+console.log('--- DON\'T COMPARE ARRAYS WITH "==" ---');
+// Arrays in JS should not be compared with "==".
+// == works with arrays as it would with any object
+// The rules are:
+// • Two objects are equal "==" only if they are references to the same object.
+// • If one of the arguments of "==" is an object, and the other one is a primitive,
+//   then the object gets converted to primitive.
+// • With an exception of "null" and "undefined" that equal "==" each other and nothing else.
+// "===" is even simpler, as it does not convert types.
+
+// If arrays are compared with "==", they are never the same, unless compared to two variables that
+// reference exactly the same array.
+console.log([] == []); // false
+console.log([0] == [0]); // false
+
+// Comparison with primitives may also give strange results:
+console.log(0 == []); // true
+console.log("0" == []); // false
+// Here the array gets converted into an empty string for the purpose of comparison to a primitive
+// After [] was converted to "":
+console.log(0 == ""); // true
+console.log("0" == ""); // false
+
+// Do not use "==" to compare arrays, instead compare them item-by-item in a loop or iteration methods 
+// explained in the next chapter (4. DataTypes/5.ArrayMethods.js)
