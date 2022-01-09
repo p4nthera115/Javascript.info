@@ -139,7 +139,7 @@ console.log("--- SEARCHING IN ARRAY ---");
 // Methods that search in an array.
 
 // indexOf/lastIndexOf and includes
-
+console.log("-- indexOf/lastIndexOf and includes --");
 // Methods "arr.indexOf", "arr.lastIndexOf" and "arr.includes" have the same syntax and do
 // essentially the same as their string counterparts:
 // • "arr.indexOf(item, from)" - looks for "item" starting from index "from", and returns the
@@ -155,8 +155,9 @@ console.log(arr.indexOf(null)); // -1
 
 console.log(arr.includes(1)); // true
 
-// find and findIndes
+// find and findIndex
 console.log("");
+console.log("-- find and findIndex --");
 // "arr.find(fn)" method finds object with specific condition in an array of objects
 // Syntax:
 /*
@@ -165,3 +166,237 @@ console.log("");
         // for falsy scenario returns undefined
     });
 */
+// The function is called for elements of the array, one of another:
+// • "item" is the element.
+// • "index" is the index.
+// • "array" is the array itself.
+
+// If it returns "true", the search is stopped the "item" is returned. If nothing found, "undefined"
+// is returned.
+
+// Example
+heroes = [
+  { id: 1, name: "Finn" },
+  { id: 2, name: "Jake" },
+  { id: 3, name: "BMO" },
+];
+
+let hero = heroes.find((item) => item.id == 3);
+
+console.log(hero.name); // BMO
+
+// "arr.findIndex" is essentially the same but instead returns the index instead of the element itself,
+// it returns "-1" if nothing is found
+let heroIndex = heroes.findIndex((item) => item.id == 4);
+
+console.log(heroIndex); // -1
+
+// Filter
+console.log("");
+console.log("-- filter --");
+// "find" method looks for single element that makes the function return true.
+// If there is more than one, "arr.filter(fn)" can be used.
+// Syntax:
+/*
+  let results = arr.filter(function(item, index, array) {
+    // if true item is pushed to results and the iteration continues
+    // returns empty array if nothing found
+  });
+*/
+
+// Example:
+heroes = [
+  { id: 1, name: "Finn" },
+  { id: 2, name: "Jake" },
+  { id: 3, name: "BMO" },
+];
+
+// returns array of the first two users
+let someHeroes = heroes.filter((item) => item.id < 3);
+
+console.log(someHeroes.length);
+
+// Transform an Array
+console.log("");
+console.log("--- TRANSFORM AN ARRAY ---");
+// Methods that transform and reorder an array.
+
+console.log("-- map --");
+// "arr.map" calls the function for each element of the array returns the array of results
+// Syntax:
+/*
+  let result = arr.map(function(item, index, array) {
+    // returns the new value instead of item
+  });
+*/
+
+let candyPeople = [
+  { id: 1, name: "PepBut" },
+  { id: 2, name: "Starchy" },
+  { id: 3, name: "Cinnamon Bun" },
+];
+
+let lengths = candyPeople.map((item) => item.name.length);
+console.log(lengths); // 6, 7, 12
+
+// sort(fn)
+console.log("");
+console.log("-- sort(fn) --");
+// "arr.sort()" sorts the array in place, changing its element order.
+// Also returns the sorted array, but the returned value is usually ignored as "arr" is modified.
+// For instance:
+arr = [1, 2, 15];
+
+arr.sort(); // the method reorders the content of arr
+
+console.log(arr); // 1, 15, 2 (items are sorted as strings by default)
+
+// A function needs be passed in as the argument of "arr.sort()" to fix the order.
+
+// The function should compare two arbitrary values and return:
+function compare(a, b) {
+  console.log(a + " <-> " + b);
+
+  if (a > b) return 1; // ( > 0),  if first value is greater than second sort b before a
+  if (a == b) return 0; // ( === 0), if values are equal keep original order of an and b
+  if (a < b) return -1; // ( < 0), if first value is less than second sort a before b
+}
+
+arr = [1, 2, 15];
+
+arr.sort(compare);
+
+console.log(arr); // 1, 2, 15
+
+// Check which elements are being compared
+console.log("");
+arr = [1, -2, 15, 2, 0, 8];
+
+arr.sort(function (a, b) {
+  console.log(a + " <-> " + b);
+  return a - b;
+});
+
+console.log(arr); // -2, 0, 1, 2, 8, 15
+
+// simplify with arrow function
+arr = [1, -2, 15, 2, 0, 8];
+
+arr.sort((a, b) => a - b);
+
+console.log(arr);
+
+// reverse
+console.log("");
+console.log("-- reverse --");
+// "arr.reverse" reverses the order of elements in arr
+arr = [1, 2, 3, 4, 5];
+arr.reverse();
+
+console.log(arr); // 5, 4, 3, 2, 1
+
+// split and join
+console.log("");
+console.log("-- split and join --");
+// "str.split(delim)" splits a string into an array by the given delimiter "delim".
+// Example:
+let names = "BMO, NEPTR, Gunter";
+
+arr = names.split(", ");
+
+for (let name of arr) {
+  console.log(`A message to ${name}`);
+}
+
+// "split" had an optional second numeric argument - a limit on array length
+arr = names.split(", ", 2);
+
+console.log(arr); // BMO, NEPTR
+
+// "arr.join(glue)" does the reverse to "split". It creates a string of "arr" items joined by "glue".
+// Example:
+arr = ["BMO", "NEPTR", "Gunter"];
+
+let str = arr.join(", ");
+
+console.log(str);
+
+// reduce/reduceRight
+console.log("");
+console.log("-- reduce/reduceRight --");
+// "arr.reduce / arr.reduceRight" calculate a single value based on the array.
+// Syntax:
+/*
+  let value = arr.reduce(function(accumulator, item, array) {
+    // ...
+  }, [initial]);
+*/
+
+// The function is applied to all array elements one after another and "carries on" its result to the next call.
+
+// Arguments:
+// • "accumulator" - is the result of the previous function call, equals
+//   "initial" the first time (if "initial" is provided).
+// • "item" - is the current array item
+// • "index" - is its position
+// • "array" is the array
+
+// As function is applied, result of previous function call is passed to next one as first argument "accumulator".
+arr = [1, 2, 3, 4, 5];
+
+let result = arr.reduce((sum, current) => sum + current, 0);
+
+console.log(result); // 15
+
+// if no "initial" value, first element is taken as "initial" and starts iteration from 2nd element
+
+// "arr.reduceRight" does the same but goes from right to left
+arr = [1, 2, 3, 4, 5];
+
+result = arr.reduceRight((sum, current) => sum + current, 0);
+
+console.log(result); // 15
+
+// Array.isArray
+console.log("");
+console.log("--- ARRAY.ISARRAY ---");
+// Because arrays are based on objects, "typeof" does not distinguish between a plain object and an array:
+console.log(typeof {}); // object
+console.log(typeof []); // object
+
+// "Array.isArray(value)" is used for this, it returns true if the "value" is an array and false if not.
+console.log(Array.isArray({})); // false
+console.log(Array.isArray([])); // true
+
+// Most Methods Support "thisArg"
+console.log("");
+console.log("--- THISARG ---");
+// Almost all array methods that call functions accept an optional additional parameter "thisArg".
+// Full syntax of methods with "thisArg" included:
+/*
+  arr.find(func, thisArg);
+  arr.filter(func, thisArg);
+  arr.map(func, thisArg);
+  // ...
+  // thisArg is the optional last argument
+*/
+
+// The value of "thisArg" becomes "this" for "func".
+// Example:
+let army = {
+  minAge: 18,
+  maxAge: 27,
+  canJoin(user) {
+    return user.age >= this.minAge && user.age < this.maxAge;
+  },
+};
+
+let users = [{ age: 16 }, { age: 20 }, { age: 23 }, { age: 30 }];
+
+// find uders, for who army.canJoin returns true
+let soldiers = users.filter(army.canJoin, army);
+
+console.log(soldiers);
+console.log(soldiers.length);
+console.log(soldiers[0].age);
+console.log(soldiers[1].age);
