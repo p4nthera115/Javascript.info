@@ -393,7 +393,7 @@ let army = {
 
 let users = [{ age: 16 }, { age: 20 }, { age: 23 }, { age: 30 }];
 
-// find uders, for who army.canJoin returns true
+// find users, for who army.canJoin returns true
 let soldiers = users.filter(army.canJoin, army);
 
 console.log(soldiers);
