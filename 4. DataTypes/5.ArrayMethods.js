@@ -419,11 +419,11 @@ console.log("--- CHEAT SHEET ---");
 //      its elements are taken.
 
 // • To search among elements:
-//    • indexOf/lastIndexOf(item, pos) - look for "item" starting from position "pos", 
+//    • indexOf/lastIndexOf(item, pos) - look for "item" starting from position "pos",
 //    return the index or -1 if not found.
 //    • includes(value) - returns "true" if the array has "value",
 //    otherwise "false".
-//    • find/filter(func) - filter elements through the function, return 
+//    • find/filter(func) - filter elements through the function, return
 //      first/all values that make it return "true".
 //    • "findIndex" is like "find", but returns the index instead of value.
 
@@ -440,3 +440,20 @@ console.log("--- CHEAT SHEET ---");
 
 // Additionally:
 //    • Array.isArray(arr) checks "arr" for being an array.
+
+// Tasks:
+console.log("");
+console.log("--- TASKS ---");
+
+function camelize(str) {
+  arr = str.split("-");
+  result = arr.map((word, index) => {
+    return index > 0 ? word.charAt(0).toUpperCase() + word.slice(1) : word;
+  });
+  camel = result.join("");
+  return camel.charAt(0).toLowerCase() + camel.slice(1);
+}
+
+console.log(camelize("background-color"));
+console.log(camelize("list-style-image"));
+console.log(camelize("-webkit-transition"));
