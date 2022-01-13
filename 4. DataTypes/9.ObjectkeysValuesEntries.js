@@ -62,4 +62,3 @@ let doublePrices = Object.fromEntries(
 );
 
 console.log(doublePrices.meat); // 8
-
