@@ -126,3 +126,4 @@ function pow(x, n) {
   }
 }
 // There are no more nested calls, so the function finishes, returning "2".
+
