@@ -356,7 +356,7 @@ list.next.next.next = { value: 4 };
 // prepend the new value to the lest
 list = { value: "new item", next: list };
 
-// To remove a vaule from the middle, change "next" of the previous one:
+// To remove a value from the middle, change "next" of the previous one:
 list.next = list.next.next;
 console.log(list);
 
@@ -371,3 +371,113 @@ console.log(list);
 // • A variable "tall" can also be added to reference the last element of the list
 //   (and update it when adding/removing elements from the end).
 // • The data structure may vary according to the required needs.
+
+// Tasks
+console.log("");
+console.log("--- TASKS ---");
+
+// Sum All Numbers Till The Given One
+console.log("");
+console.log("--- TASK 1 ---");
+// Write a function "sumTo(n)" that calculates the sum of numbers "1 + 2 + ... + n"
+// 3 solutions:
+// 1. Using a for loop.
+// 2. Using a recursion, cause "sumTo(n) = n + sumTo(n - 1)" for "n > 1".
+// 3. Using arithmetic progression formula.
+
+// Loop:
+console.log("-- loop --");
+function sumTo(n) {
+  sum = 0;
+  for (let i = 0; i <= n; i++) {
+    sum += i;
+  }
+  return sum;
+}
+
+console.log(sumTo(1)); // 1
+console.log(sumTo(2)); // 3
+console.log(sumTo(3)); // 6
+console.log(sumTo(4)); // 10
+console.log(sumTo(100)); // 5050
+
+// Recursion:
+console.log("-- recursion --");
+function sumTo1(n) {
+  let sum = 0;
+  if (sum === n) {
+    return sum;
+  } else {
+    return (sum += n + sumTo1(n - 1));
+  }
+}
+
+// Their recursion solution:
+// function sumTo(n) {
+//   if (n == 1) return 1;
+//   return n + sumTo(n - 1);
+// }
+
+console.log(sumTo1(1));
+console.log(sumTo1(2));
+console.log(sumTo1(3));
+console.log(sumTo1(4));
+console.log(sumTo1(100));
+
+// Arithmetic Progression:
+console.log("-- arithmetic progression --");
+function sumTo2(n) {
+  return (n * (n + 1)) / 2;
+}
+
+console.log(sumTo2(1));
+console.log(sumTo2(2));
+console.log(sumTo2(3));
+console.log(sumTo2(4));
+console.log(sumTo2(100));
+
+// Output A Single-linked List
+console.log("--- TASK 2 ---");
+// Write a function "printList(list)" that outputs list items one-by-one.
+// 2 variants:
+// 1. Using loop
+// 2. Using recursion
+
+list = {
+  value: 1,
+  next: {
+    value: 2,
+    next: {
+      value: 3,
+      next: {
+        value: 4,
+        next: null,
+      },
+    },
+  },
+};
+
+// Loop:
+console.log("-- loop --");
+
+function printList(list) {
+  let item = list;
+  while (item) {
+    console.log(item.value);
+    item = item.next;
+  }
+}
+
+printList(list);
+
+// Recursion:
+console.log("-- recursion --");
+
+function printList1(list) {
+  console.log(list.value);
+  if (list.next) {
+    printList1(list.next);
+  }
+}
+
+printList1(list);
