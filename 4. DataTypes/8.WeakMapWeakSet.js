@@ -61,7 +61,7 @@ console.log("--- USE CASE: ADDITIONAL DATA ---");
 // like to stor some data associated with it, that should only exist while the object is alive - then
 // "WeakMap" is what is needed.
 
-// Data is put into a "WeakMap", using hte object as the key, and when the object is garbage collected,
+// Data is put into a "WeakMap", using the object as the key, and when the object is garbage collected,
 // that data will automatically disappear as well.
 finn = {};
 weakMap.set(finn, "enchiridion");
