@@ -65,5 +65,3 @@ function defer(f, ms) {
   };
 }
 // Here additional variables "args" and "ctx" had to be created so that the function inside "setTimeout" could take them.
-
-
