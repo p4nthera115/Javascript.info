@@ -1,3 +1,5 @@
+const header = document.querySelector("h1");
+header.innerText = "Promise";
 // Promise
 console.log("--- PROMISE ---");
 
@@ -64,7 +66,7 @@ promise = new Promise(function (resolve, reject) {
 // They also only expect one argument (or none) and will ignore additional arguments.
 
 // Consumers: then, catch, finally
-console.log("");
+console.log(" ");
 console.log("--- CONSUMERS: THEN, CATCH, FINALLY ---");
 
 // A "Promise" object serves as a link between the executor and the consuming functions,
@@ -72,7 +74,7 @@ console.log("--- CONSUMERS: THEN, CATCH, FINALLY ---");
 // ".then", ".catch" and ".finally".
 
 // then
-console.log("");
+console.log(" ");
 console.log("-- then --");
 
 // The most important, fundamental one is ".then".
@@ -116,7 +118,7 @@ promise = new Promise((resolve) => {
 promise.then(console.log);
 
 // catch
-console.log("");
+console.log(" ");
 console.log("-- catch --");
 
 // If interested only in errors, then "null" can be used as the first argument:
@@ -129,7 +131,7 @@ promise = new Promise((resolve, reject) => {
 promise.catch(console.log);
 
 // finally
-console.log("");
+console.log(" ");
 console.log("-- finally --");
 
 // Just like there is a "finally" clase in a regular "try {...} catch {...}",
@@ -152,5 +154,50 @@ console.log("-- finally --");
 */
 
 // There are a few differences between "finally(f)" and "then(f, f)":
-// 1. A "finally" hanfler has no arguments. In "finally" it is unknown whether the promise is successful or not.
-//    
+// 1. A "finally" handler has no arguments. In "finally" it is unknown whether the promise is successful or not.
+//    That is okay, as the task is usually to perform "general" finalizing procedures.
+// 2. A "finally" handler passes through results and errors to the next handler.
+
+// For instance, here the result is passed through "finally" to "then":
+new Promise((resolve, reject) => {
+  setTimeout(() => resolve("result"), 1500);
+})
+  .finally(() => console.log("Promise ready"))
+  .then((result) => console.log(result)); // <-- .then handles the result
+
+// And here there is an error in the promise, passed through "finally" to catch:
+new Promise((resolve, reject) => {
+  throw new Error("error (.finally)");
+})
+  .finally(() => console.log("Promise ready (.finally)"))
+  .catch((err) => console.log(err));
+
+// That is very convenient, because "finally" is not meant to process a promise result. So it passes it through.
+
+// Example: loadScript
+console.log(" ");
+console.log("--- EXAMPLE: LOADSCRIPT ---");
+
+// Rewrite callback-based variant of "loadScript" from previous chapter using promises:
+function loadScript(src) {
+  return new Promise(function (resolve, reject) {
+    let script = document.createElement("script");
+    script.src = src;
+
+    script.onload = () => resolve(script);
+    script.onerror = () => reject(new Error(`Script load error for ${src}`));
+
+    document.head.append(script);
+  });
+}
+// Usage:
+promise = loadScript(
+  "https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.11/lodash.js"
+);
+
+promise.then(
+  (script) => console.log(`${script.src} is loaded!`),
+  (error) => console.log(`Error: ${error.message}`)
+);
+
+promise.then((script) => console.log("Another handler..."));
