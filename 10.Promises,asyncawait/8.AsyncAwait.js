@@ -141,4 +141,3 @@ f5().catch(console.log); // TypeError: failed to fetch (*)
 
 // If ".catch" is not added, then returns an unhandled promise error.
 // "unhandledrejection" event handler can be used to catch such errors.
-
