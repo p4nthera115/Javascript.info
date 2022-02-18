@@ -90,7 +90,7 @@ fruits.unshift("pineapple", "lemon"); // add to beginning
 
 console.log(fruits);
 
-// Interanals
+// Internals
 console.log("");
 console.log("--- INTERNALS ---");
 // An array is a special kind of object.
