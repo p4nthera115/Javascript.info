@@ -115,7 +115,7 @@ Promise.allSettled(urls.map((url) => fetch(url))).then((results) => {
 console.log(" ");
 console.log("-- Polyfill --");
 
-// If the browser does not support "Promise.allSettled", it is eay to polyfill:
+// If the browser does not support "Promise.allSettled", it is easy to polyfill:
 if (!Promise.allSettled) {
   const rejectHandler = (reason) => ({ status: "rejected", reason });
 
