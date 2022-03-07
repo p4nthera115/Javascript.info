@@ -307,4 +307,4 @@ setTimeout(button.click, 1000); // hello
 // there is a seperate funciton for each "Button" object, with "this" inside it referencing that object.
 // "button.click" can be passed around anywhere and the value of "this" will always be correct.
 
-// That is especially useful in browser environent, for event listeners.
+// That is especially useful in browser environment, for event listeners.
